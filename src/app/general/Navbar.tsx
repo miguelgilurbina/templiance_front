@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Button } from "../../components/ui/button";
 
 export default function Navbar() {
   return (
@@ -26,15 +27,15 @@ export default function Navbar() {
           <span className="ml-2 text-xl font-bold">TEMPLIANCE</span>
         </div>
         <div className="space-x-4">
-          {/* <Button variant="ghost" asChild> */}
-          <Link href="/plantillas">Plantillas</Link>
-          {/* </Button> */}
-          {/* <Button variant="ghost" asChild> */}
-          <Link href="/nosotros">Nosotros</Link>
-          {/* </Button> */}
-          {/* <Button variant="ghost" asChild> */}
-          <Link href="/contacto">Contacto</Link>
-          {/* </Button> */}
+          <Button variant="ghost" asChild>
+            <Link href="/plantillas">Plantillas</Link>
+          </Button>
+          <Button variant="ghost" asChild>
+            <Link href="/nosotros">Nosotros</Link>
+          </Button>
+          <Button variant="ghost" asChild>
+            <Link href="/contacto">Contacto</Link>
+          </Button>
         </div>
       </nav>
     </div>
