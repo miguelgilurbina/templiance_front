@@ -15,8 +15,8 @@ type Slide = {
 const slides: Slide[] = [
   {
     id: 1,
-    title: "Welcome to Our Platform",
-    subtitle: "Discover amazing features and possibilities",
+    title: "Bienvenido a Templiance",
+    subtitle: "Descubre Plantillas en Ciberseguridad",
     picture: "/placeholder.svg?height=600&width=1200",
   },
   {
