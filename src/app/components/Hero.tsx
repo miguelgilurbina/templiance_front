@@ -4,15 +4,15 @@ import { Button } from "../../components/ui/button";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import image1 from "../../public/image1.png";
-import image2 from "../../public/image2.png";
-import image3 from "../../public/image3.png";
+import image5 from "../../../public/image5.png";
+import image2 from "../../../public/image2.png";
+import image3 from "../../../public/image4.png";
 
 type Slide = {
   id: number;
   title: string;
   subtitle: string;
-  picture: typeof image1;
+  picture: typeof image5;
 };
 
 const slides: Slide[] = [
@@ -20,7 +20,7 @@ const slides: Slide[] = [
     id: 1,
     title: "Bienvenido a Templiance",
     subtitle: "Descubre Plantillas en Ciberseguridad",
-    picture: image1,
+    picture: image5,
   },
   {
     id: 2,
