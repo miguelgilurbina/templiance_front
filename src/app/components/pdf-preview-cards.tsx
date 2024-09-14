@@ -4,12 +4,14 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { FileIcon, SearchIcon } from "lucide-react";
+import thumbnail from "../../../public/PDFimage.png";
+import Image from "next/image";
 
 type PDFCard = {
   id: string;
   title: string;
   description: string;
-  thumbnailUrl: string;
+  thumbnailUrl: typeof thumbnail;
 };
 
 const samplePDFs: PDFCard[] = [
@@ -17,31 +19,25 @@ const samplePDFs: PDFCard[] = [
     id: "1",
     title: "Annual Report 2023",
     description: "Comprehensive financial report for the fiscal year 2023",
-    thumbnailUrl: "/placeholder.svg?height=400&width=300",
+    thumbnailUrl: thumbnail,
   },
   {
     id: "2",
     title: "Product Catalog",
     description: "Detailed catalog of our latest product offerings",
-    thumbnailUrl: "/placeholder.svg?height=400&width=300",
+    thumbnailUrl: thumbnail,
   },
   {
     id: "3",
     title: "Research Paper",
     description: "Scientific research on renewable energy sources",
-    thumbnailUrl: "/placeholder.svg?height=400&width=300",
+    thumbnailUrl: thumbnail,
   },
   {
     id: "4",
     title: "User Manual",
     description: "Step-by-step guide for using our flagship product",
-    thumbnailUrl: "/placeholder.svg?height=400&width=300",
-  },
-  {
-    id: "5",
-    title: "Company Brochure",
-    description: "Overview of our company's history, values, and services",
-    thumbnailUrl: "/placeholder.svg?height=400&width=300",
+    thumbnailUrl: thumbnail,
   },
 ];
 
@@ -50,7 +46,7 @@ function PDFCard({ pdf }: { pdf: PDFCard }) {
     <Card className="w-full max-w-sm mx-auto group relative overflow-hidden transition-all duration-300 ease-in-out hover:shadow-lg">
       <CardContent className="p-0">
         <div className="relative aspect-[3/4]">
-          <img
+          <Image
             src={pdf.thumbnailUrl}
             alt={`Preview of ${pdf.title}`}
             className="w-full h-full object-cover"
@@ -60,9 +56,6 @@ function PDFCard({ pdf }: { pdf: PDFCard }) {
             <h3 className="text-lg font-semibold mb-1">{pdf.title}</h3>
             <p className="text-sm text-center">{pdf.description}</p>
           </div>
-        </div>
-        <div className="absolute top-2 left-2 bg-white rounded-full px-2 py-1 text-xs font-semibold">
-          ID: {pdf.id}
         </div>
       </CardContent>
     </Card>

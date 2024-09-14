@@ -4,32 +4,35 @@ import { Button } from "../../components/ui/button";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import image5 from "../../../public/image5.png";
+import image2 from "../../../public/image2.png";
+import image3 from "../../../public/image4.png";
 
 type Slide = {
   id: number;
   title: string;
   subtitle: string;
-  picture: string;
+  picture: typeof image5;
 };
 
 const slides: Slide[] = [
   {
     id: 1,
-    title: "Welcome to Our Platform",
-    subtitle: "Discover amazing features and possibilities",
-    picture: "/placeholder.svg?height=600&width=1200",
+    title: "Bienvenido a Templiance",
+    subtitle: "Descubre Plantillas en Ciberseguridad",
+    picture: image5,
   },
   {
     id: 2,
     title: "Innovative Solutions",
     subtitle: "Transforming ideas into reality",
-    picture: "/placeholder.svg?height=600&width=1200",
+    picture: image2,
   },
   {
     id: 3,
     title: "Join Our Community",
     subtitle: "Connect with like-minded individuals",
-    picture: "/placeholder.svg?height=600&width=1200",
+    picture: image3,
   },
 ];
 
