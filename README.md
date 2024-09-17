@@ -1,4 +1,14 @@
+updated 17/09/2024
+
+## Introduction
+
+Templiance is a modern web application designed as a marketplace for professional templates aimed at helping individuals and organizations streamline their certification and audit processes. Built with Next.js, this platform offers a curated selection of templates for various certifications, such as information security and quality management, providing users with the tools they need to meet compliance requirements effectively.
+
+The application features a user-friendly interface, a robust backend, and a dynamic frontend experience. With its intuitive design and easily accessible resources, Templiance simplifies the process of preparing for audits, ensuring that users have access to high-quality templates that save time and enhance compliance efforts.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+![Vista previa de Templiance](./public/Templiance%20First%20Iteration.gif) <!-- Aquí insertas tu GIF -->
 
 ## Getting Started
 
