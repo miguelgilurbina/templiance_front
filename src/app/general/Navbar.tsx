@@ -8,7 +8,7 @@ export default function Navbar() {
     <header className="bg-white shadow-sm ">
       <div className="container mx-width min-height px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-4">
-          {/* Logo y Título a la Izquierda */}
+          {/* Logo & Title*/}
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
               <Image src={logo} alt="Templiance Logo" width={50} height={50} />
@@ -16,7 +16,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Navigation al Centro-Derecha */}
+          {/* Navigation */}
           <nav className="hidden md:flex space-x-8 ml-auto mr-4">
             <Link href="/" className="text-secondary hover:text-primary">
               Inicio
@@ -44,13 +44,13 @@ export default function Navbar() {
             </Link>
           </nav>
 
-          {/* CTA Buttons al Final */}
+          {/* CTA Buttons  */}
           <div className="flex items-center space-x-4">
             <Button variant="outline" className="hidden sm:inline-flex">
-              Iniciar Sesión
+              Log In
             </Button>
             <Button className="bg-accent text-white hover:bg-accent/90">
-              Registrarse
+              Register
             </Button>
           </div>
         </div>
