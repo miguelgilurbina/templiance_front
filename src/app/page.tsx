@@ -3,6 +3,7 @@ import Footer from "../app/general/Footer";
 import Hero from "../app/components/Hero";
 import PDFPreviewCards from "./components/pdf-preview-cards";
 import BenefitsSection from "./components/BenifitsSection";
+import HowItWorksSection from "./components/HowItWorks";
 
 const Home: React.FC = () => {
   return (
@@ -10,6 +11,7 @@ const Home: React.FC = () => {
       <Navbar />
       <Hero />
       <BenefitsSection />
+      <HowItWorksSection />
       <PDFPreviewCards />
       <Footer />
     </div>
