@@ -21,7 +21,7 @@ const BenefitItem: React.FC<BenefitItemProps> = ({
   </div>
 );
 
-export default function BenefitsSection() {
+export default function Benefits() {
   const benefits = [
     {
       icon: <CheckCircle size={48} />,
