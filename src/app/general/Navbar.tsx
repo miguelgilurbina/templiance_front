@@ -5,26 +5,56 @@ import logo from "../../../public/Templiance Logo.png";
 
 export default function Navbar() {
   return (
-    <div className="flex flex-col min-h-min">
-      {/* Navbar */}
-      <nav className="flex items-center justify-between p-4 bg-white shadow-sm">
-        <div className="flex items-center">
-          {/* Replace with your actual logo */}
-          <Image src={logo} alt="Templiance Logo" width={50} height={50} />
-          <span className="ml-2 text-xl font-bold">TEMPLIANCE</span>
+    <header className="bg-white shadow-sm ">
+      <div className="container mx-width min-height px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between py-4">
+          {/* Logo & Title*/}
+          <div className="flex items-center">
+            <Link href="/" className="flex items-center">
+              <Image src={logo} alt="Templiance Logo" width={50} height={50} />
+              <span className="ml-2 text-lg font-bold">TEMPLIANCE</span>
+            </Link>
+          </div>
+
+          {/* Navigation */}
+          <nav className="hidden md:flex space-x-8 ml-auto mr-4">
+            <Link href="/" className="text-secondary hover:text-primary">
+              Inicio
+            </Link>
+            <Link
+              href="/templates"
+              className="text-secondary hover:text-primary"
+            >
+              Templates
+            </Link>
+            <Link
+              href="/como-funciona"
+              className="text-secondary hover:text-primary"
+            >
+              Cómo Funciona
+            </Link>
+            <Link href="/precios" className="text-secondary hover:text-primary">
+              Precios
+            </Link>
+            <Link
+              href="/contacto"
+              className="text-secondary hover:text-primary"
+            >
+              Contacto
+            </Link>
+          </nav>
+
+          {/* CTA Buttons  */}
+          <div className="flex items-center space-x-4">
+            <Button variant="outline" className="hidden sm:inline-flex">
+              Log In
+            </Button>
+            <Button className="bg-accent text-white hover:bg-accent/90">
+              Register
+            </Button>
+          </div>
         </div>
-        <div className="space-x-4">
-          <Button variant="ghost" asChild>
-            <Link href="/plantillas">Plantillas</Link>
-          </Button>
-          <Button variant="ghost" asChild>
-            <Link href="/nosotros">Nosotros</Link>
-          </Button>
-          <Button variant="ghost" asChild>
-            <Link href="/contacto">Contacto</Link>
-          </Button>
-        </div>
-      </nav>
-    </div>
+      </div>
+    </header>
   );
 }

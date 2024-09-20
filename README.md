@@ -8,6 +8,8 @@ The application features a user-friendly interface, a robust backend, and a dyna
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## FIRST ITERATION
+
 ![Vista previa de Templiance](./public/Templiance%20First%20Iteration.gif) <!-- Aquí insertas tu GIF -->
 
 ## Getting Started

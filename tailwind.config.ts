@@ -19,7 +19,8 @@ const config: Config = {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		colors: {
-  			background: 'hsl(var(--background))',
+        	background: '#FFFFFF',
+       		backup: '#F2F2F2',
   			foreground: 'hsl(var(--foreground))',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
@@ -30,11 +31,11 @@ const config: Config = {
   				foreground: 'hsl(var(--popover-foreground))'
   			},
   			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
+  				DEFAULT: '#003366',
   				foreground: 'hsl(var(--primary-foreground))'
   			},
   			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
+  				DEFAULT: '#4B4B4B',
   				foreground: 'hsl(var(--secondary-foreground))'
   			},
   			muted: {
@@ -42,7 +43,7 @@ const config: Config = {
   				foreground: 'hsl(var(--muted-foreground))'
   			},
   			accent: {
-  				DEFAULT: 'hsl(var(--accent))',
+  				DEFAULT: '#66CC99',
   				foreground: 'hsl(var(--accent-foreground))'
   			},
   			destructive: {
@@ -59,9 +60,14 @@ const config: Config = {
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
   			}
-  		}
-  	}
+  		},
+		fontFamily: {
+			'primary': ['Roboto', 'sans-serif'],
+			'secondary': ['Open Sans', 'sans-serif'],
+		  },
+  	},
   },
+  variants: {},
   plugins: [require("tailwindcss-animate")],
 };
 export default config;
