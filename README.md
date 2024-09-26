@@ -10,7 +10,11 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## FIRST ITERATION
 
-![Vista previa de Templiance](./public/Templiance%20First%20Iteration.gif) <!-- Aquí insertas tu GIF -->
+![Vista previa ](./public/Templiance%20First%20Iteration.gif) <!-- Aquí insertas tu GIF -->
+
+## SECOND ITERATION
+
+![Vista previa ](./public/Templiance%20Second%20Iteration.gif)
 
 ## Getting Started
 
