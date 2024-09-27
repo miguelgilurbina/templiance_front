@@ -1,6 +1,6 @@
 import Navbar from "../app/general/Navbar";
 import Footer from "../app/general/Footer";
-import Hero from "../app/components/Hero";
+import Hero from "./components/Hero";
 import Preview from "./components/Preview";
 import Benefits from "./components/Benifits";
 import HowItWorksSection from "./components/HowItWorks";

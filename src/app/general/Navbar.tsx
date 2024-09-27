@@ -36,10 +36,7 @@ export default function Navbar() {
             <Link href="/precios" className="text-secondary hover:text-primary">
               Precios
             </Link>
-            <Link
-              href="/contacto"
-              className="text-secondary hover:text-primary"
-            >
+            <Link href="/contact" className="text-secondary hover:text-primary">
               Contacto
             </Link>
           </nav>
