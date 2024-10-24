@@ -11,8 +11,9 @@ export async function generateMetadata(): Promise<Metadata> {
   const page = await client.getSingle("settings");
   return {
     title: page.data.site_title || "Templiance Fallback",
+    description: page.data.meta_description || "Teplates for your success",
     openGraph: {
-      images: ["/some-specific-page-image.jpg", ...previousImages],
+      images: [page.data.og_image.url || "Metadata Image"],
     },
   };
 }
