@@ -1,6 +1,8 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Header from "@/app/general/Header";
+import Footer from "@/app/general/Footer";
 import { createClient } from "@/prismicio";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -8,12 +10,12 @@ const inter = Inter({ subsets: ["latin"] });
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
 
-  const page = await client.getSingle("settings");
+  const settings = await client.getSingle("settings");
   return {
-    title: page.data.site_title || "Templiance Fallback",
-    description: page.data.meta_description || "Teplates for your success",
+    title: settings.data.site_title || "Templiance Fallback",
+    description: settings.data.meta_description || "Teplates for your success",
     openGraph: {
-      images: [page.data.og_image.url || "Metadata Image"],
+      images: [settings.data.og_image.url || "Metadata Image"],
     },
   };
 }
@@ -25,7 +27,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

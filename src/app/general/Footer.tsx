@@ -1,21 +1,30 @@
-"use client";
 import React from "react";
 import Link from "next/link";
 import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { createClient } from "@/prismicio";
+import { PrismicNextLink } from "@prismicio/next";
 
-export default function Footer() {
+export default async function Footer() {
+  const client = createClient();
+
+  const settings = await client.getSingle("settings");
+
+  const footer = await client.getSingle("footer");
+
   return (
     <footer className="bg-primary text-white py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
-            <h3 className="font-primary text-xl font-bold mb-4">Templiance</h3>
-            <p className="mb-4">
-              Simplificando el cumplimiento normativo para empresas de todos los
-              tamaños.
-            </p>
+            <Link href={"/"}>
+              <h3 className="font-primary text-xl font-bold mb-4">
+                {settings.data.site_title}
+              </h3>
+            </Link>
+
+            <p className="mb-4">{footer.data.paragraph}</p>
             <div className="flex space-x-4">
               <a href="#" aria-label="Facebook" className="hover:text-accent">
                 <Facebook size={24} />
@@ -33,7 +42,7 @@ export default function Footer() {
           </div>
           <div>
             <h4 className="font-primary text-lg font-semibold mb-4">
-              Enlaces Rápidos
+              {footer.data.subtitle1}
             </h4>
             <ul className="space-y-2">
               <li>
@@ -60,10 +69,15 @@ export default function Footer() {
           </div>
           <div>
             <h4 className="font-primary text-lg font-semibold mb-4">
-              Productos
+              {footer.data.subtitle2}
             </h4>
             <ul className="space-y-2">
-              <li>
+              {footer.data.navigation.map(({ link, label }) => (
+                <li key={label} className="hover:text-accent">
+                  <PrismicNextLink field={link}>{label}</PrismicNextLink>
+                </li>
+              ))}
+              {/* <li>
                 <Link href="/templates" className="hover:text-accent">
                   Templates
                 </Link>
@@ -82,7 +96,7 @@ export default function Footer() {
                 <Link href="/blog" className="hover:text-accent">
                   Blog
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div>
