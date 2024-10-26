@@ -17,13 +17,13 @@ export default async function Footer() {
     <footer className="bg-primary text-white py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Site Title and Social Links */}
           <div>
             <Link href={"/"}>
               <h3 className="font-primary text-xl font-bold mb-4">
                 {settings.data.site_title}
               </h3>
             </Link>
-
             <p className="mb-4">{footer.data.paragraph}</p>
             <div className="flex space-x-4">
               <a href="#" aria-label="Facebook" className="hover:text-accent">
@@ -40,65 +40,36 @@ export default async function Footer() {
               </a>
             </div>
           </div>
+
+          {/* Navigation Column 1 */}
           <div>
             <h4 className="font-primary text-lg font-semibold mb-4">
               {footer.data.subtitle1}
             </h4>
             <ul className="space-y-2">
-              <li>
-                <Link href="/about" className="hover:text-accent">
-                  Acerca de
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-accent">
-                  Contacto
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy-policy" className="hover:text-accent">
-                  Política de Privacidad
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms-of-service" className="hover:text-accent">
-                  Términos de Servicio
-                </Link>
-              </li>
+              {footer.data.navigation.slice(0, 4).map(({ link, label }) => (
+                <li key={label} className="hover:text-accent">
+                  <PrismicNextLink field={link}>{label}</PrismicNextLink>
+                </li>
+              ))}
             </ul>
           </div>
+
+          {/* Navigation Column 2 */}
           <div>
             <h4 className="font-primary text-lg font-semibold mb-4">
               {footer.data.subtitle2}
             </h4>
             <ul className="space-y-2">
-              {footer.data.navigation.map(({ link, label }) => (
+              {footer.data.navigation.slice(4, 8).map(({ link, label }) => (
                 <li key={label} className="hover:text-accent">
                   <PrismicNextLink field={link}>{label}</PrismicNextLink>
                 </li>
               ))}
-              {/* <li>
-                <Link href="/templates" className="hover:text-accent">
-                  Templates
-                </Link>
-              </li>
-              <li>
-                <Link href="/pricing" className="hover:text-accent">
-                  Precios
-                </Link>
-              </li>
-              <li>
-                <Link href="/resources" className="hover:text-accent">
-                  Recursos
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className="hover:text-accent">
-                  Blog
-                </Link>
-              </li> */}
             </ul>
           </div>
+
+          {/* Newsletter Subscription */}
           <div>
             <h4 className="font-primary text-lg font-semibold mb-4">
               Suscríbete a nuestro newsletter
@@ -118,6 +89,8 @@ export default async function Footer() {
             </form>
           </div>
         </div>
+
+        {/* Footer Bottom Section */}
         <div className="mt-8 pt-8 border-t border-white/10 text-center">
           <p>
             &copy; {new Date().getFullYear()} Templiance. Todos los derechos

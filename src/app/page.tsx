@@ -5,17 +5,40 @@ import HowItWorksSection from "./components/HowItWorks";
 import TestimonialsSection from "./components/TestimonialsSection";
 import CTASection from "./components/CTASection";
 
-const Home: React.FC = () => {
-  return (
-    <div className="flex flex-col min-h-screen">
-      <Hero />
-      <HowItWorksSection />
-      <Preview />
-      <Benefits />
-      <CTASection />
-      <TestimonialsSection />
-    </div>
-  );
-};
+// const Home: React.FC = () => {
+//   return (
+//     <div className="flex flex-col min-h-screen">
+//       <Hero />
+//       <HowItWorksSection />
+//       <Preview />
+//       <Benefits />
+//       <CTASection />
+//       <TestimonialsSection />
+//     </div>
+//   );
+// // };
 
-export default Home;
+// export default Home;
+
+import { Metadata } from "next";
+import { SliceZone } from "@prismicio/react";
+
+import { createClient } from "@/prismicio";
+import { components } from "@/slices";
+
+export default async function Page() {
+  const client = createClient();
+  const page = await client.getSingle("homepage");
+
+  return <SliceZone slices={page.data.slices} components={components} />;
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const client = createClient();
+  const page = await client.getSingle("homepage");
+
+  return {
+    title: page.data.meta_title,
+    description: page.data.meta_description,
+  };
+}
