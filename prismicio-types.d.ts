@@ -280,14 +280,14 @@ export interface HeroSliceDefaultPrimary {
   title: prismic.RichTextField;
 
   /**
-   * Description field in *Hero → Default → Primary*
+   * Body field in *Hero → Default → Primary*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.description
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **API ID Path**: hero.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  description: prismic.KeyTextField;
+  body: prismic.RichTextField;
 
   /**
    * Button_text field in *Hero → Default → Primary*

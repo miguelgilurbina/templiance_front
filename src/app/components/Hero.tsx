@@ -3,6 +3,9 @@
 import { Button } from "../../components/ui/button";
 import image1 from "../../../public/image1.png";
 import Image from "next/image";
+import { createClient } from "@/prismicio";
+
+// Tarea pendiente, víncular Home page con Prismic, conectando todos los componentes con su debida slice en slice-machine
 
 export default function Hero() {
   return (
