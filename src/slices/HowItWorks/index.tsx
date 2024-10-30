@@ -40,7 +40,7 @@ const HowItWorks = ({ slice }: HowItWorksProps): JSX.Element => {
           field={slice.primary.title}
           components={{
             heading2: ({ children }) => (
-              <h2 className="font-primary text-3xl font-bold text-primary text-center mb-12">
+              <h2 className="font-primary text-3xl font-bold text-primary text-center mb-1">
                 {children}
               </h2>
             ),
