@@ -18,16 +18,13 @@ const StepItem: React.FC<{
 }> = ({ icon, title, description }) => (
   <div className="flex flex-col items-center text-center">
     <div className="text-accent mb-4">{icon}</div>
-    <h3 className="font-primary text-xl font-semibold text-primary mb-2">
+    <h2 className="font-primary text-2xl font-bold text-primary text-center mb-12">
       {title}
-    </h3>
+    </h2>
     <p className="text-secondary">{description}</p>
   </div>
 );
 
-/**
- * Component for "HowItWorks" Slices.
- */
 const HowItWorks = ({ slice }: HowItWorksProps): JSX.Element => {
   return (
     <section
@@ -40,7 +37,7 @@ const HowItWorks = ({ slice }: HowItWorksProps): JSX.Element => {
           field={slice.primary.title}
           components={{
             heading2: ({ children }) => (
-              <h2 className="font-primary text-3xl font-bold text-primary text-center mb-1">
+              <h2 className="font-primary text-3xl font-bold text-primary text-center mb-16">
                 {children}
               </h2>
             ),

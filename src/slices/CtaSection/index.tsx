@@ -18,7 +18,7 @@ const CtaSection = ({ slice }: CtaSectionProps): JSX.Element => {
           field={slice.primary.title}
           components={{
             heading2: ({ children }) => (
-              <h2 className="font-primary text-3xl font-bold text-white mb-4">
+              <h2 className="font-primary text-3xl font-bold text-white mb-8">
                 {children}
               </h2>
             ),
