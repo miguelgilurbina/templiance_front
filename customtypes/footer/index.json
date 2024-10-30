@@ -1,0 +1,58 @@
+{
+  "format": "custom",
+  "id": "footer",
+  "label": "footer",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "subtitle1": {
+        "type": "Text",
+        "config": {
+          "label": "subtitle1",
+          "placeholder": ""
+        }
+      },
+      "subtitle2": {
+        "type": "Text",
+        "config": {
+          "label": "subtitle2",
+          "placeholder": ""
+        }
+      },
+      "paragraph": {
+        "type": "Text",
+        "config": {
+          "label": "paragraph",
+          "placeholder": ""
+        }
+      },
+      "navigation": {
+        "type": "Group",
+        "config": {
+          "label": "navigation",
+          "repeat": true,
+          "fields": {
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "link",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "select": null,
+                "allowText": true
+              }
+            },
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "label",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
