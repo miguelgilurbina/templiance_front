@@ -23,41 +23,17 @@ export default async function Navbar() {
 
           {/* Navigation */}
           <nav>
-            <ul className="hidden md:flex space-x-8 ml-auto mr-4">
+            <ul className="hidden md:flex space-x-8 ml-64">
               {settings.data.navigation.map(({ link, label }) => (
                 <li key={label} className="text-secondary hover:text-primary">
                   <PrismicNextLink field={link}>{label}</PrismicNextLink>
                 </li>
               ))}
             </ul>
-
-            {/* Links de NavBar estáticos */}
-
-            {/* <Link href="/" className="text-secondary hover:text-primary">
-              Inicio
-            </Link>
-            <Link
-              href="/templates"
-              className="text-secondary hover:text-primary"
-            >
-              Templates
-            </Link>
-            <Link
-              href="/como-funciona"
-              className="text-secondary hover:text-primary"
-            >
-              Cómo Funciona
-            </Link>
-            <Link href="/precios" className="text-secondary hover:text-primary">
-              Precios
-            </Link>
-            <Link href="/contact" className="text-secondary hover:text-primary">
-              Contacto
-            </Link> */}
           </nav>
 
           {/* CTA Buttons  */}
-          <div className="flex items-center space-x-16">
+          <div className="flex items-center space-x-4">
             <Button variant="outline" className="hidden sm:inline-flex">
               Log In
             </Button>

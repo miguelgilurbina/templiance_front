@@ -1,0 +1,70 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Sunt duis commodo sunt excepteur sit id ea."
+						}
+					}
+				]
+			},
+			"section": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Proident nulla aliquip commodo velit nulla duis tempor anim commodo. Sit ullamco nulla sit voluptate."
+											}
+										}
+									]
+								}
+							],
+							[
+								"paragraph",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Ea officia adipisicing nisi commodo labore. Nulla culpa voluptate veniam nisi in eu. Fugiat id consectetur reprehenderit amet velit cupidatat eu."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			},
+			"button_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "FileLink",
+					"id": "mock_Media_link",
+					"kind": "file",
+					"name": "mock_name",
+					"url": "https://source.unsplash.com/daily",
+					"size": "0",
+					"text": "hall"
+				}
+			}
+		},
+		"items": []
+	}
+]

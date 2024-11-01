@@ -174,6 +174,71 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
+type InformationDocumentDataSlicesSlice = InformationSliceSlice;
+
+/**
+ * Content for Information documents
+ */
+interface InformationDocumentData {
+  /**
+   * Slice Zone field in *Information*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: information.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<InformationDocumentDataSlicesSlice> /**
+   * Meta Title field in *Information*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: information.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Information*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: information.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Information*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: information.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Information document from Prismic
+ *
+ * - **API ID**: `information`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type InformationDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<InformationDocumentData>,
+    "information",
+    Lang
+  >;
+
 /**
  * Item in *Settings → Navigation*
  */
@@ -267,6 +332,7 @@ export type SettingsDocument<Lang extends string = string> =
 export type AllDocumentTypes =
   | FooterDocument
   | HomepageDocument
+  | InformationDocument
   | SettingsDocument;
 
 /**
@@ -519,6 +585,98 @@ export type HowItWorksSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *InformationSlice → Default → Primary → Section*
+ */
+export interface InformationSliceSliceDefaultPrimarySectionItem {
+  /**
+   * Title field in *InformationSlice → Default → Primary → Section*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: information_slice.default.primary.section[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Paragraph field in *InformationSlice → Default → Primary → Section*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: information_slice.default.primary.section[].paragraph
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  paragraph: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *InformationSlice → Default → Primary*
+ */
+export interface InformationSliceSliceDefaultPrimary {
+  /**
+   * Title field in *InformationSlice → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: information_slice.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Section field in *InformationSlice → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: information_slice.default.primary.section[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  section: prismic.GroupField<
+    Simplify<InformationSliceSliceDefaultPrimarySectionItem>
+  >;
+
+  /**
+   * Button_link field in *InformationSlice → Default → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: information_slice.default.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkToMediaField;
+}
+
+/**
+ * Default variation for InformationSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type InformationSliceSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<InformationSliceSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *InformationSlice*
+ */
+type InformationSliceSliceVariation = InformationSliceSliceDefault;
+
+/**
+ * InformationSlice Shared Slice
+ *
+ * - **API ID**: `information_slice`
+ * - **Description**: InformationSlice
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type InformationSliceSlice = prismic.SharedSlice<
+  "information_slice",
+  InformationSliceSliceVariation
+>;
+
+/**
  * Item in *Testimonials → Default → Primary → Items*
  */
 export interface TestimonialsSliceDefaultPrimaryItemsItem {
@@ -665,6 +823,9 @@ declare module "@prismicio/client" {
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
+      InformationDocument,
+      InformationDocumentData,
+      InformationDocumentDataSlicesSlice,
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
@@ -682,6 +843,11 @@ declare module "@prismicio/client" {
       HowItWorksSliceDefaultPrimary,
       HowItWorksSliceVariation,
       HowItWorksSliceDefault,
+      InformationSliceSlice,
+      InformationSliceSliceDefaultPrimarySectionItem,
+      InformationSliceSliceDefaultPrimary,
+      InformationSliceSliceVariation,
+      InformationSliceSliceDefault,
       TestimonialsSlice,
       TestimonialsSliceDefaultPrimaryItemsItem,
       TestimonialsSliceDefaultPrimary,
