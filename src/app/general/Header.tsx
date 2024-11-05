@@ -9,6 +9,12 @@ export default async function Navbar() {
   const client = createClient();
 
   const settings = await client.getSingle("settings");
+
+  if (!settings) {
+    // Handle the case where settings are not found
+    console.error("Settings not found in Prismic");
+    return null; // or return a default header
+  }
   return (
     <header className="bg-white shadow-sm ">
       <div className="container mx-width min-height px-4 sm:px-6 lg:px-12">

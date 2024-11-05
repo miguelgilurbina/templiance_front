@@ -1,6 +1,8 @@
+
 import * as prismic from "@prismicio/client";
 import * as prismicNext from "@prismicio/next";
 import config from "../slicemachine.config.json";
+
 
 /**
  * The project's Prismic repository name.
@@ -13,17 +15,24 @@ export const repositoryName =
  *
  * {@link https://prismic.io/docs/route-resolver#route-resolver}
  */
-// TODO: Update the routes array to match your project's route structure.
+
 const routes: prismic.ClientConfig["routes"] = [
-  // Examples:
+  {
+    type: "homepage",
+    path: "/",
+  },
   // {
-  // 	type: "homepage",
-  // 	path: "/",
+  //   type: "page",
+  //   path: "/:uid",
   // },
-  // {
-  // 	type: "page",
-  // 	path: "/:uid",
-  // },
+  {
+    type: "settings",
+    path: "/",
+  },
+  {
+    type: "footer",
+    path: "/",
+  },
 ];
 
 /**

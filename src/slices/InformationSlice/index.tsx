@@ -12,6 +12,8 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Link from "next/link";
 
+import type { JSX } from "react";
+
 export type InformationSliceProps =
   SliceComponentProps<Content.InformationSliceSlice>;
 
