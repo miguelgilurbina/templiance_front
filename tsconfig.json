@@ -35,8 +35,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/components/AbouUsPagetsx",
-    "types/**/*.ts"
+    "types/**/*.d.ts"
   ],
   "exclude": [
     "node_modules"

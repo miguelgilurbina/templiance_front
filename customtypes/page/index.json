@@ -1,5 +1,5 @@
 {
-  "format": "custom",
+  "format": "page",
   "id": "page",
   "label": "Page",
   "repeatable": true,
@@ -9,7 +9,7 @@
       "uid": {
         "type": "UID",
         "config": {
-          "label": "UID"
+          "label": "page"
         }
       },
       "slices": {
@@ -26,40 +26,29 @@
     },
     "SEO & Metadata": {
       "meta_title": {
-        "type": "Text",
         "config": {
-          "label": "Meta_Title",
-          "placeholder": ""
-        }
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        },
+        "type": "Text"
       },
       "meta_description": {
-        "type": "Text",
         "config": {
-          "label": "Meta_Description",
-          "placeholder": ""
-        }
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
       },
       "meta_image": {
-        "type": "Image",
         "config": {
-          "label": "Meta_Image",
           "constraint": {
-            "width": 1200,
-            "height": 630
+            "height": 1260,
+            "width": 2400
           },
+          "label": "Meta Image",
           "thumbnails": []
-        }
-      },
-      "slices1": {
-        "type": "Slices",
-        "fieldset": "Slice Zone",
-        "config": {
-          "choices": {
-            "information_slice": {
-              "type": "SharedSlice"
-            }
-          }
-        }
+        },
+        "type": "Image"
       }
     }
   }
