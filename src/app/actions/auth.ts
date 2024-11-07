@@ -14,15 +14,18 @@ export async function signUp(formData: FormData) {
   }
 
   const existingUser = await db.getUserByEmail(email);
+
   if (existingUser) {
     return { error: 'User already exists' };
   }
 
+  // Create a User
   const hashedPassword = await hashPassword(password);
   const user = await db.createUser(email, hashedPassword);
 
   // Create a session
-  cookies().set('session', user.id, {
+  const cookieStore = await cookies();
+  cookieStore.set('session', user.id, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     maxAge: 60 * 60 * 24 * 7, // 1 week
@@ -51,7 +54,8 @@ export async function signIn(formData: FormData) {
   }
 
   // Create a session
-  cookies().set('session', user.id, {
+  const cookieStore = await cookies();
+  cookieStore.set('session', user.id, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     maxAge: 60 * 60 * 24 * 7, // 1 week
@@ -62,6 +66,7 @@ export async function signIn(formData: FormData) {
 }
 
 export async function signOut() {
-  cookies().delete('session');
+  const cookieStore = await cookies();
+  cookieStore.delete('session');
   return { success: true };
 }

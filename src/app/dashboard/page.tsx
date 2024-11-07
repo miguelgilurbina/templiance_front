@@ -3,8 +3,9 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { signOut } from "@/app/actions/auth";
 
-export default function DashboardPage() {
-  const session = cookies().get("session");
+export default async function DashboardPage() {
+  const cookieStore = await cookies();
+  const session = cookieStore.get("session");
 
   if (!session) {
     redirect("/signin");
