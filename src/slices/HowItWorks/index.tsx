@@ -2,6 +2,8 @@ import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { Search, FileText, CheckSquare, Award, LucideIcon } from "lucide-react";
 
+import type { JSX } from "react";
+
 export type HowItWorksProps = SliceComponentProps<Content.HowItWorksSlice>;
 
 const iconMap: { [key: string]: LucideIcon } = {

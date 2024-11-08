@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import SectionTitle from "../general/SectionTitle";
 import { Mail, Phone, Linkedin, Twitter } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components//ui/button";
 
 interface TeamMemberProps {
   name: string;

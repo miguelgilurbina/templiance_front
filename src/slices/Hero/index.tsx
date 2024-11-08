@@ -3,12 +3,14 @@ import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { Button } from "../../components/ui/button";
 
+import type { JSX } from "react";
+
 export type HeroProps = SliceComponentProps<Content.HeroSlice>;
 
 const Hero = ({ slice }: HeroProps): JSX.Element => {
   return (
     <section
-      className="relative w-full h-[400px] overflow-hidden bg-backup py-20"
+      className="relative w-full h-[400px] overflow-hidden bg-backup py-16"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
