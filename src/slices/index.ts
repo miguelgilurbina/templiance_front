@@ -6,6 +6,5 @@ export const components = {
   cta_section: dynamic(() => import("./CtaSection")),
   hero: dynamic(() => import("./Hero")),
   how_it_works: dynamic(() => import("./HowItWorks")),
-  information_slice: dynamic(() => import("./InformationSlice")),
   testimonials: dynamic(() => import("./Testimonials")),
 };

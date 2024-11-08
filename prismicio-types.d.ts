@@ -174,7 +174,7 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = InformationSliceSlice;
+type PageDocumentDataSlicesSlice = never;
 
 /**
  * Content for Page documents
@@ -581,118 +581,6 @@ export type HowItWorksSlice = prismic.SharedSlice<
 >;
 
 /**
- * Item in *InformationSlice → Default → Primary → Section*
- */
-export interface InformationSliceSliceDefaultPrimarySectionItem {
-  /**
-   * Section_Title field in *InformationSlice → Default → Primary → Section*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: information_slice.default.primary.section[].section_title
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  section_title: prismic.RichTextField;
-
-  /**
-   * Section_Content field in *InformationSlice → Default → Primary → Section*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: information_slice.default.primary.section[].section_content
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  section_content: prismic.RichTextField;
-
-  /**
-   * Section_List field in *InformationSlice → Default → Primary → Section*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: information_slice.default.primary.section[].section_list
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  section_list: prismic.RichTextField;
-}
-
-/**
- * Primary content in *InformationSlice → Default → Primary*
- */
-export interface InformationSliceSliceDefaultPrimary {
-  /**
-   * Title field in *InformationSlice → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: information_slice.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  title: prismic.RichTextField;
-
-  /**
-   * ButtonLink field in *InformationSlice → Default → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: information_slice.default.primary.buttonlink
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  buttonlink: prismic.LinkField;
-
-  /**
-   * ButtonText field in *InformationSlice → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: information_slice.default.primary.buttontext
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  buttontext: prismic.KeyTextField;
-
-  /**
-   * Section field in *InformationSlice → Default → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: information_slice.default.primary.section[]
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  section: prismic.GroupField<
-    Simplify<InformationSliceSliceDefaultPrimarySectionItem>
-  >;
-}
-
-/**
- * Default variation for InformationSlice Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type InformationSliceSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<InformationSliceSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *InformationSlice*
- */
-type InformationSliceSliceVariation = InformationSliceSliceDefault;
-
-/**
- * InformationSlice Shared Slice
- *
- * - **API ID**: `information_slice`
- * - **Description**: InformationSlice
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type InformationSliceSlice = prismic.SharedSlice<
-  "information_slice",
-  InformationSliceSliceVariation
->;
-
-/**
  * Item in *Testimonials → Default → Primary → Items*
  */
 export interface TestimonialsSliceDefaultPrimaryItemsItem {
@@ -859,11 +747,6 @@ declare module "@prismicio/client" {
       HowItWorksSliceDefaultPrimary,
       HowItWorksSliceVariation,
       HowItWorksSliceDefault,
-      InformationSliceSlice,
-      InformationSliceSliceDefaultPrimarySectionItem,
-      InformationSliceSliceDefaultPrimary,
-      InformationSliceSliceVariation,
-      InformationSliceSliceDefault,
       TestimonialsSlice,
       TestimonialsSliceDefaultPrimaryItemsItem,
       TestimonialsSliceDefaultPrimary,
