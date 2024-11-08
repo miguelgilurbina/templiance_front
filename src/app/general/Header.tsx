@@ -4,19 +4,22 @@ import Image from "next/image";
 import logo from "../../../public/Templiance Logo.png";
 import { createClient } from "@/prismicio";
 import { PrismicNextLink } from "@prismicio/next";
+import { cookies } from "next/headers";
 
 export default async function Navbar() {
   const client = createClient();
+  const cookieStore = await cookies();
+  const session = cookieStore.get("session");
 
   const settings = await client.getSingle("settings");
 
   if (!settings) {
-    // Handle the case where settings are not found
     console.error("Settings not found in Prismic");
-    return null; // or return a default header
+    return null;
   }
+
   return (
-    <header className="bg-white shadow-sm ">
+    <header className="bg-white shadow-sm">
       <div className="container mx-width min-height px-4 sm:px-6 lg:px-12">
         <div className="flex items-center justify-between py-4">
           {/* Logo & Title*/}
@@ -40,12 +43,36 @@ export default async function Navbar() {
 
           {/* CTA Buttons  */}
           <div className="flex items-center space-x-4">
-            <Button variant="outline" className="hidden sm:inline-flex">
-              Log In
-            </Button>
-            <Button className="bg-accent text-white hover:bg-accent/90">
-              Register
-            </Button>
+            {session ? (
+              <>
+                <Link href="/dashboard">
+                  <Button variant="outline" className="hidden sm:inline-flex">
+                    Dashboard
+                  </Button>
+                </Link>
+                <form action="/api/auth/signout" method="POST">
+                  <Button
+                    type="submit"
+                    className="bg-accent text-white hover:bg-accent/90"
+                  >
+                    Sign Out
+                  </Button>
+                </form>
+              </>
+            ) : (
+              <>
+                <Link href="/signin">
+                  <Button variant="outline" className="hidden sm:inline-flex">
+                    Log In
+                  </Button>
+                </Link>
+                <Link href="/signup">
+                  <Button className="bg-accent text-white hover:bg-accent/90">
+                    Register
+                  </Button>
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>

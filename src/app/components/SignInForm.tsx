@@ -1,62 +1,122 @@
-// app/components/SignInForm.tsx
 "use client";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { signIn } from "@/app/actions/auth";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
+import { Github, Twitter } from "lucide-react";
+
+interface IFormInputs {
+  email: string;
+  password: string;
+}
 
 export default function SignInForm() {
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string>("");
   const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormInputs>();
 
-  async function handleSubmit(formData: FormData) {
+  const onSubmit: SubmitHandler<IFormInputs> = async (data) => {
+    const formData = new FormData();
+    formData.append("email", data.email);
+    formData.append("password", data.password);
+
     const result = await signIn(formData);
     if (result.error) {
       setError(result.error);
     } else {
       router.push("/dashboard");
     }
-  }
+  };
 
   return (
-    <form action={handleSubmit} className="space-y-4">
-      <div>
-        <label
-          htmlFor="email"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Email
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          required
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        />
-      </div>
-      <div>
-        <label
-          htmlFor="password"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Password
-        </label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          required
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        />
-      </div>
-      {error && <p className="text-red-500">{error}</p>}
-      <button
-        type="submit"
-        className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-      >
-        Sign In
-      </button>
-    </form>
+    <Card className="w-[350px]">
+      <CardHeader>
+        <CardTitle>Sign In</CardTitle>
+        <CardDescription>
+          Enter your credentials to access your account
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              type="email"
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^\S+@\S+$/i,
+                  message: "Invalid email address",
+                },
+              })}
+            />
+            {errors.email && (
+              <p className="text-sm text-red-500">{errors.email.message}</p>
+            )}
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="password">Password</Label>
+            <Input
+              id="password"
+              type="password"
+              {...register("password", { required: "Password is required" })}
+            />
+            {errors.password && (
+              <p className="text-sm text-red-500">{errors.password.message}</p>
+            )}
+          </div>
+          {error && (
+            <Alert variant="destructive">
+              <AlertDescription>{error}</AlertDescription>
+            </Alert>
+          )}
+          <Button type="submit" className="w-full">
+            Sign In
+          </Button>
+        </form>
+      </CardContent>
+      <CardFooter>
+        <div className="flex flex-col space-y-4 w-full">
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-background px-2 text-muted-foreground">
+                Or continue with
+              </span>
+            </div>
+          </div>
+          <div className="flex space-x-4">
+            <Button variant="outline" className="w-full">
+              <Github className="mr-2 h-4 w-4" />
+              Github
+            </Button>
+            <Button variant="outline" className="w-full">
+              <Twitter className="mr-2 h-4 w-4" />
+              Twitter
+            </Button>
+          </div>
+        </div>
+      </CardFooter>
+    </Card>
   );
 }
