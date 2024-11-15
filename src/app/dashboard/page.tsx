@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-import { signOut } from "@/app/actions/auth";
+// import { cookies } from "next/headers";
+// import { redirect } from "next/navigation";
+// import { signOut } from "@/app/actions/auth";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -117,7 +117,7 @@ export default function DashboardPage() {
               <Settings className="mr-2 h-4 w-4" />
               Settings
             </Button>
-            <form action={signOut}>
+            <form action={"#"}>
               <Button
                 variant="ghost"
                 type="submit"
