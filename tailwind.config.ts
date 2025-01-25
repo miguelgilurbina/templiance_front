@@ -19,7 +19,7 @@ const config: Config = {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		colors: {
-  			background: '#FFFFFF',
+  			background: 'hsl(var(--background))',
   			backup: '#F2F2F2',
   			foreground: 'hsl(var(--foreground))',
   			card: {
@@ -31,11 +31,11 @@ const config: Config = {
   				foreground: 'hsl(var(--popover-foreground))'
   			},
   			primary: {
-  				DEFAULT: '#003366',
+  				DEFAULT: 'hsl(var(--primary))',
   				foreground: 'hsl(var(--primary-foreground))'
   			},
   			secondary: {
-  				DEFAULT: '#4B4B4B',
+  				DEFAULT: 'hsl(var(--secondary))',
   				foreground: 'hsl(var(--secondary-foreground))'
   			},
   			muted: {
@@ -43,7 +43,7 @@ const config: Config = {
   				foreground: 'hsl(var(--muted-foreground))'
   			},
   			accent: {
-  				DEFAULT: '#66CC99',
+  				DEFAULT: 'hsl(var(--accent))',
   				foreground: 'hsl(var(--accent-foreground))'
   			},
   			destructive: {
@@ -62,8 +62,14 @@ const config: Config = {
   			}
   		},
   		fontFamily: {
-  			primary: ['Roboto', 'sans-serif'],
-  			secondary: ['Open Sans', 'sans-serif']
+  			primary: [
+  				'Roboto',
+  				'sans-serif'
+  			],
+  			secondary: [
+  				'Open Sans',
+  				'sans-serif'
+  			]
   		},
   		keyframes: {
   			'accordion-down': {

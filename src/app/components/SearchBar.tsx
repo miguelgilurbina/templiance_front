@@ -44,18 +44,36 @@ interface AdvancedSearchBarProps {
   loading: boolean;
 }
 
-const filterPresets = [
+const filterPresets: Array<{
+  name: string;
+  filters: Partial<Filter>;
+}> = [
   {
     name: "Most Popular ISO",
-    filters: { certificationType: ["ISO"], sortBy: "relevance" },
+    filters: {
+      certificationType: ["ISO"],
+      sortBy: "relevance",
+      industry: [],
+      priceRange: [0, 1000],
+    },
   },
   {
     name: "Newest NIST",
-    filters: { certificationType: ["NIST"], sortBy: "newest" },
+    filters: {
+      certificationType: ["NIST"],
+      sortBy: "newest",
+      industry: [],
+      priceRange: [0, 1000],
+    },
   },
   {
     name: "Affordable Compliance",
-    filters: { priceRange: [0, 100], sortBy: "price_low_to_high" },
+    filters: {
+      certificationType: [],
+      industry: [],
+      priceRange: [0, 100],
+      sortBy: "price_low_to_high",
+    },
   },
 ];
 
@@ -131,9 +149,17 @@ export default function AdvancedSearchBar({
   };
 
   const applyPreset = (preset: (typeof filterPresets)[0]) => {
-    setFilters((prev) => ({ ...prev, ...preset.filters }));
+    setFilters((prev) => {
+      const newFilters: Filter = {
+        certificationType:
+          preset.filters.certificationType ?? prev.certificationType,
+        industry: preset.filters.industry ?? prev.industry,
+        priceRange: preset.filters.priceRange ?? prev.priceRange,
+        sortBy: preset.filters.sortBy ?? prev.sortBy,
+      };
+      return newFilters;
+    });
   };
-
   return (
     <div className="w-full max-w-4xl mx-auto space-y-4">
       <div className="relative">
@@ -165,7 +191,16 @@ export default function AdvancedSearchBar({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2 }}
-                className="absolute z-10 w-full mt-1 bg-white rounded-md shadow-lg"
+                style={{
+                  position: "absolute",
+                  zIndex: 10,
+                  width: "100%",
+                  marginTop: "4px", // equivalente a mt-1
+                  backgroundColor: "white",
+                  borderRadius: "6px", // equivalente a rounded-md
+                  boxShadow:
+                    "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)", // equivalente a shadow-lg
+                }}
               >
                 <Command>
                   <CommandList>

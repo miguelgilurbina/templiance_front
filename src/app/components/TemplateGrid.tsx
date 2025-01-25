@@ -50,7 +50,7 @@ const TemplateCard = ({
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.5 }}
-      className="h-full"
+      style={{ height: "100%" }}
     >
       <Card className="h-full flex flex-col transition-shadow duration-300 hover:shadow-lg">
         <CardHeader className="p-0">
@@ -60,7 +60,7 @@ const TemplateCard = ({
               alt={template.title}
               layout="fill"
               objectFit="cover"
-              className="transition-transform duration-300 hover:scale-105"
+              className="transition-transform duration-300 hover:scale-105 object-cover"
             />
           </div>
         </CardHeader>
@@ -120,14 +120,19 @@ export default function TemplateGrid({
 
   const loadMoreTemplates = async () => {
     if (loadingMore) return;
-    setLoadingMore(true);
-    // Simulating API call with setTimeout
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    const nextTemplates = templates.slice((page - 1) * 12, page * 12);
-    setVisibleTemplates((prev) => [...prev, ...nextTemplates]);
-    setPage((prev) => prev + 1);
-    setHasMore(page * 12 < templates.length);
-    setLoadingMore(false);
+    try {
+      setLoadingMore(true);
+      // Simulating API call with setTimeout
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const nextTemplates = templates.slice((page - 1) * 12, page * 12);
+      setVisibleTemplates((prev) => [...prev, ...nextTemplates]);
+      setPage((prev) => prev + 1);
+      setHasMore(page * 12 < templates.length);
+    } catch (error) {
+      console.error("Error loading more templates:", error);
+    } finally {
+      setLoadingMore(false);
+    }
   };
 
   useEffect(() => {
@@ -139,10 +144,10 @@ export default function TemplateGrid({
   });
 
   useEffect(() => {
-    if (inView && hasMore) {
+    if (inView && hasMore && !loadingMore) {
       loadMoreTemplates();
     }
-  }, [inView]);
+  }, [inView, hasMore, loadingMore, loadMoreTemplates]);
 
   if (error) {
     return (
