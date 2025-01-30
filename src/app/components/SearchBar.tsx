@@ -172,12 +172,12 @@ export default function AdvancedSearchBar({
           onKeyDown={handleKeyDown}
           onFocus={() => setShowSuggestions(true)}
           onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-          className="pr-10"
+          className="pr-10 bg-background border-border text-foreground"
         />
         <Button
           size="sm"
-          variant="ghost"
-          className="absolute right-2 top-1/2 transform -translate-y-1/2"
+          variant="default"
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary text-primary-foreground hover:bg-primary/90"
           onClick={handleSearch}
           disabled={loading}
         >

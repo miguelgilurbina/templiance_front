@@ -52,8 +52,8 @@ const TemplateCard = ({
       transition={{ duration: 0.5 }}
       style={{ height: "100%" }}
     >
-      <Card className="h-full flex flex-col transition-shadow duration-300 hover:shadow-lg">
-        <CardHeader className="p-0">
+      <Card className="h-full flex flex-col transition-shadow duration-300 hover:shadow-lg bg-background border-border hover:border-primary/20">
+        <CardHeader className="p-0 text-primary">
           <div className="relative aspect-video w-full overflow-hidden rounded-t-lg">
             <Image
               src={template.previewImage || "/placeholder.svg"}
@@ -64,7 +64,7 @@ const TemplateCard = ({
             />
           </div>
         </CardHeader>
-        <CardContent className="flex-grow p-4">
+        <CardContent className="flex-grow p-4 text-secondary">
           <CardTitle className="text-lg font-semibold mb-2">
             {template.title}
           </CardTitle>
